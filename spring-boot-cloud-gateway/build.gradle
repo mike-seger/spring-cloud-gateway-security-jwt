@@ -1,0 +1,29 @@
+buildscript {
+    ext {
+        springBootVersion = "2.6.4"
+        springCloudVersion = "2021.0.1"
+    }
+}
+plugins {
+    id "org.springframework.boot" version "${springBootVersion}"
+    id "java"
+    id "io.freefair.lombok" version "6.4.1"
+}
+
+group = "com.net128"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "11"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+    implementation "org.springframework.cloud:spring-cloud-starter-gateway:3.1.1"
+    implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client"
+    implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
+    implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
+    implementation "io.jsonwebtoken:jjwt:0.9.1"
+}

@@ -1,0 +1,24 @@
+buildscript {
+    ext {
+        springBootVersion = "2.6.4"
+        springCloudVersion = "2021.0.1"
+    }
+}
+plugins {
+    id "org.springframework.boot" version "${springBootVersion}"
+    id "java"
+}
+
+group = "com.net128"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "11"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+}
