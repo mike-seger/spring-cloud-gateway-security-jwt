@@ -1,8 +1,6 @@
-package com.roytuts.spring.boot.cloud.gateway.filter;
+package com.roytuts.spring.boot.cloud.gateway;
 
-import java.util.List;
-import java.util.function.Predicate;
-
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -11,13 +9,10 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-
-import com.roytuts.spring.boot.cloud.gateway.exception.JwtTokenMalformedException;
-import com.roytuts.spring.boot.cloud.gateway.exception.JwtTokenMissingException;
-import com.roytuts.spring.boot.cloud.gateway.util.JwtUtil;
-
-import io.jsonwebtoken.Claims;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
+import java.util.function.Predicate;
 
 @Component
 public class JwtAuthenticationFilter implements GatewayFilter {

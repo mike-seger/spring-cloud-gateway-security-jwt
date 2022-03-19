@@ -1,12 +1,10 @@
-package com.roytuts.spring.boot.cloud.gateway.config;
+package com.roytuts.spring.boot.cloud.gateway;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.roytuts.spring.boot.cloud.gateway.filter.JwtAuthenticationFilter;
 
 @Configuration
 public class GatewayConfig {

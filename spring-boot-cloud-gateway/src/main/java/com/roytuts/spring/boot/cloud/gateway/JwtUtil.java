@@ -1,29 +1,16 @@
-package com.roytuts.spring.boot.auth.service.util;
+package com.roytuts.spring.boot.cloud.gateway;
 
-import java.util.Date;
-
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.roytuts.spring.boot.auth.service.exception.JwtTokenMalformedException;
-import com.roytuts.spring.boot.auth.service.exception.JwtTokenMissingException;
-
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
+import javax.naming.AuthenticationException;
 
 @Component
 public class JwtUtil {
 
 	@Value("${jwt.secret}")
 	private String jwtSecret;
-
-	@Value("${jwt.token.validity}")
-	private long tokenValidity;
 
 	public Claims getClaims(final String token) {
 		try {
@@ -33,15 +20,6 @@ public class JwtUtil {
 			System.out.println(e.getMessage() + " => " + e);
 		}
 		return null;
-	}
-
-	public String generateToken(String id) {
-		Claims claims = Jwts.claims().setSubject(id);
-		long nowMillis = System.currentTimeMillis();
-		long expMillis = nowMillis + tokenValidity;
-		Date exp = new Date(expMillis);
-		return Jwts.builder().setClaims(claims).setIssuedAt(new Date(nowMillis)).setExpiration(exp)
-				.signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 	}
 
 	public void validateToken(final String token) throws JwtTokenMalformedException, JwtTokenMissingException {
@@ -60,4 +38,22 @@ public class JwtUtil {
 		}
 	}
 
+}
+
+class JwtTokenMissingException extends AuthenticationException {
+
+	private static final long serialVersionUID = 1L;
+
+	public JwtTokenMissingException(String msg) {
+		super(msg);
+	}
+}
+
+class JwtTokenMalformedException extends AuthenticationException {
+
+	private static final long serialVersionUID = 1L;
+
+	public JwtTokenMalformedException(String msg) {
+		super(msg);
+	}
 }
