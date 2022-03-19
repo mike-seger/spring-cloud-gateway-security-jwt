@@ -23,7 +23,6 @@ dependencies {
     implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
     implementation "org.springframework.cloud:spring-cloud-starter-gateway:3.1.1"
     implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client"
-    implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
     implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
     implementation "io.jsonwebtoken:jjwt:0.9.1"
 }
