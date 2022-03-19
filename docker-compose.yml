@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  spring-boot-cloud-gateway:
+    image: spring-boot-cloud-gateway:1
+    build:
+      context: ./spring-boot-cloud-gateway/
+      dockerfile: ../Dockerfile
+    ports:
+      - "8080:8080"
+
+  spring-boot-microservice-auth:
+    image: spring-boot-microservice-auth:1
+    build:
+      context: ./spring-boot-microservice-auth/
+      dockerfile: ../Dockerfile
+
+  spring-boot-microservice-sample:
+    image: spring-boot-microservice-sample:1
+    build:
+      context: ./spring-boot-microservice-sample/
+      dockerfile: ../Dockerfile
+
+  spring-boot-microservice-eureka:
+    image: spring-boot-microservice-eureka:1
+    build:
+      context: ./spring-boot-microservice-eureka/
+      dockerfile: ../Dockerfile
+    ports:
+      - "8761:8761"
